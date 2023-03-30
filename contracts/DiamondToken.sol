@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 interface IERC20 {
     function totalSupply() external view returns (uint256);
 
-    function balanceOf() external view returns (uint256);
+    function balanceOf(address owner) external view returns (uint256);
 
     function approvedRepBal(
         address owner,
@@ -69,8 +69,8 @@ contract DiamondToken is IERC20 {
     }
 
     // get balance of contract caller
-    function balanceOf() public view returns (uint256 balance) {
-        balance = balances[msg.sender];
+    function balanceOf(address owner) public view returns (uint256 balance) {
+        balance = balances[owner];
     }
 
     // transfer tokens
